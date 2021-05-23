@@ -17,10 +17,9 @@ def readSerial(img):
     # OTSU after Gaussian Filtering
     blur = cv2.GaussianBlur(imgGray, (5, 5), 0)
     ret3, th3 = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-	
 	serial[0] = detWord(th2)
-	serial[1] = detWord(th3)
-	
+    serial[1] = detWord(th3)
+    
 	return serial
 
 def detWord(img):
