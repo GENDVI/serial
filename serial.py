@@ -17,10 +17,16 @@ def readSerial(img):
     # OTSU after Gaussian Filtering
     blur = cv2.GaussianBlur(imgGray, (5, 5), 0)
     ret3, th3 = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+	
+	serial[0] = detWord(th2)
+	serial[1] = detWord(th3)
+	
+	return serial
 
-
-    # ###Detecting words
-    boxes = pytesseract.image_to_data(th3)
+def detWord(img):
+	###Detecting words
+	serial = []
+	boxes = pytesseract.image_to_data(img)
     for x,b in enumerate(boxes.splitlines()):
         #
         print(b)
@@ -29,11 +35,6 @@ def readSerial(img):
             print(b)
             if len(b) == 12:
                 serial = b[len(b)-1]
-                print('Serial = ',serial)
-            
-
-
-
+                #print('Serial = ',serial)
 	return serial
-
 
