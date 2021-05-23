@@ -35,5 +35,5 @@ def detWord(img):
             if len(b) == 12:
                 serial = b[len(b)-1]
                 #print('Serial = ',serial)
-	return serial
+    return serial
 
